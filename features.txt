@@ -1,0 +1,24 @@
+features:
+
+Part 1: Create a CRUD To Do application.
+_ A visiter can create a ToDo item
+_ a visiter can view a Todo item ("Return one ToDo as json")
+_ a visiter can view all Todo items  (Return all ToDos as json)
+_ A visiter can Edit a ToDo item
+_ A visiter can Delete a ToDo
+
+Use sqlite to minimize setup and overhead.
+
+A ToDo should have the following format:
+{
+	"task":(string) "Task name",
+	"completed":(boolean) true/false
+}
+
+The POST and PUT requests should take the data input as JSON
+
+Create an additional table called request_logs, using a middleware, log the request method and route being accessed, as well as the HTTP status code that the request returns.
+
+Example:
+http_status_code	request_method	route
+201	                GET	            /create
