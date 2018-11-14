@@ -117,7 +117,24 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $query = $request->all();
+
+        if($query) {
+            foreach($query as $input) {
+                $json = json_decode($input);
+    
+                $todo = Todo::find($id);
+                $todo->name = $json->task;
+                $todo->completed = $json->completed;
+    
+                if($todo->save()) {
+                    echo "Todo updated successfully! \n";
+                    return $todo;
+                } else {
+                    throw new Exception("Problem saving your Todo. Please try again.");
+                }
+            }
+        }
     }
 
     /**
