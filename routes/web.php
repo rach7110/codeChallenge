@@ -15,4 +15,4 @@
 //     return view('welcome');
 // });
 
-Route::get('/todo/{json}', 'TodoController@store');
+Route::get('/todo/create', 'TodoController@store');
