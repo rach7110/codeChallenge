@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Todo;
 use Illuminate\Http\Request;
+use Exception;
 
 class TodoController extends Controller
 {
@@ -35,16 +36,21 @@ class TodoController extends Controller
      */ 
     public function store(Request $request)
     {
-        $query = $_GET['task'];
-
+        $query = $request->all();
+        
         if($query) {
-            $json = json_decode($query);
+            foreach($query as $input) {
+                $json = json_decode($input);
+    
+                $todo = new Todo;
+                $todo->name = $json->task;
+                $todo->completed = $json->completed;
+    
+                $todo->save();
+            }
 
-            $todo = new Todo;
-            $todo->name = $json->task;
-            $todo->completed = $json->completed;
-
-            $todo->save();
+        } else {
+            throw new Exception("Problem saving your Todo. Please try again.");
         }
     }
 
