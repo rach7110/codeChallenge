@@ -57,12 +57,26 @@ class TodoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Todo  $todo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Todo $todo)
+    public function show($id)
     {
-        //
+        $todo = Todo::find($id);
+
+        if($todo) {
+            $name = $todo->name;
+            $completed = $todo->completed;
+    
+            $todo_json = json_encode([
+                "task" => $name,
+                "completed" => $completed
+            ]);
+        } else {
+            $todo_json = "Todo does not exists";
+        }
+
+        return $todo_json;
     }
 
     /**

@@ -15,4 +15,5 @@
 //     return view('welcome');
 // });
 
-Route::get('/todo/create', 'TodoController@store');
+Route::get('/todos/create', 'TodoController@store');
+Route::get('/todos/{todo}', 'TodoController@show');
