@@ -60,11 +60,15 @@ class TodoController extends Controller
                 $todo->name = $json->task;
                 $todo->completed = $json->completed;
     
-                $todo->save();
+                if($todo->save()) {
+                    return "Todo saved successfully!";
+                } else {
+                    throw new Exception("Problem saving your Todo. Please try again.");
+                }
             }
 
         } else {
-            throw new Exception("Problem saving your Todo. Please try again.");
+            throw new Exception("You entered incorrect json. Please try again.");
         }
     }
 
@@ -108,12 +112,12 @@ class TodoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Todo  $todo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Todo $todo)
+    public function update(Request $request, $id)
     {
-        dd($request->all());
+        
     }
 
     /**
