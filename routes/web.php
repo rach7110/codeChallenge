@@ -15,5 +15,6 @@
 //     return view('welcome');
 // });
 
+Route::get('/todos', 'TodoController@index');
 Route::get('/todos/create', 'TodoController@store');
 Route::get('/todos/{todo}', 'TodoController@show');

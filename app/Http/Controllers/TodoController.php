@@ -15,7 +15,21 @@ class TodoController extends Controller
      */
     public function index()
     {
-        //
+        $todos = Todo::all();
+        $todos_json = [];
+
+        foreach($todos as $todo) {
+            $name = $todo->name;
+            $completed = $todo->completed;
+    
+            $todos_json[] = [
+                "task" => $name,
+                "completed" => $completed
+            ];
+
+        }
+
+        return json_encode($todos_json);
     }
 
     /**
@@ -99,7 +113,7 @@ class TodoController extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        //
+        dd($request->all());
     }
 
     /**
