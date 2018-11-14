@@ -21,7 +21,7 @@ class TodoController extends Controller
         foreach($todos as $todo) {
             $name = $todo->name;
             $completed = $todo->completed;
-    
+
             $todos_json[] = [
                 "task" => $name,
                 "completed" => $completed
@@ -140,11 +140,19 @@ class TodoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Todo  $todo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Todo $todo)
+    public function destroy($id)
     {
-        //
+        $todo = Todo::find($id);
+
+        if($todo->delete()) {
+            return "Todo deleted!";
+        } else {
+            throw new Exception("Problem deleteing your Todo. Please try again.");
+        }
+
+
     }
 }
