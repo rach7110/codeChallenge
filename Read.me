@@ -1,0 +1,28 @@
+Steps for install:
+- clone app.
+- cd into app folder.
+- generate an app key with php artisan key:generate
+- create a sqilite database with command: touch database/database.sqlite
+
+- copy .env.example to .env. Make sure environment variables are correct:
+    DB_CONNECTION=sqlite
+    WEATHER_API_ID={your secret api key}
+
+- composer install
+
+- start the server: php artisan server
+- run the migration command to setup the database scheme: php artisan migrate
+
+Part 1:
+- Routes can be found in routes/web.php
+- To create a todo: http://localhost:8000/todos/create?item={"task":"go to the store", "completed":false}
+- To edit a todo:   http://localhost:8000/todos/{id}/edit?item={"task":"go to the store", "completed":true}
+
+Part 2:
+- Request weather with valid nited States zip code. Example: http://localhost:8000/weather?zip=78704
+- If a status code of 418 is returned, you enterd an invalid zip code. The 418 code is actually a spoof.
+    This error is a reference of Hyper Text Coffee Pot Control Protocol which was an April Fools' joke in 1998.
+
+
+
+
