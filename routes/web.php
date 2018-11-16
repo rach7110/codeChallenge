@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', function() {
+    return View::make('welcome');   
+});
+
 Route::middleware(['logToDatabase'])->group(function() {
     Route::get('/todos', 'TodoController@index');
     Route::get('/todos/create', 'TodoController@store');
