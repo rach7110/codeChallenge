@@ -18,8 +18,8 @@ class OpenWeatherApiService
     /** 
      * Send request to API 
      * 
-     * @param 
-     * @return 
+     * @param string $location
+     * @return Response|Exception 
      */
     public function send_request($location)
     {
@@ -28,7 +28,6 @@ class OpenWeatherApiService
                    'query' => ['zip' => $location,
                    'appid' => env('WEATHER_API_ID')]
            ]);
-
             return $response;
        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
            if ($e->hasResponse()) {
@@ -39,6 +38,12 @@ class OpenWeatherApiService
        }
     }
 
+    /** 
+     * Get a full weather report for a particular location.
+     * 
+     * @param string $location
+     * @return string $weather
+     */
     public function full_weather_report($location) 
     {
         $response = $this->send_request($location);

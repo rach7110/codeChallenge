@@ -15,6 +15,12 @@ class WeatherController extends Controller
         $this->weatherService = $weatherService;
     }
 
+    /**
+     * Create a weather report for the given location.
+     *
+     * @param  Request $request
+     * @return string
+     */
     public function create (Request $request) {
         $zip = $request->input('zip');
 

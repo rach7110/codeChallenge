@@ -35,7 +35,7 @@ class OpenWeatherServiceTest extends TestCase
     }
 
     /**
-     * Test the service Throws an Exception for a invalid geographic location.
+     * Test the service throws an Exception for an invalid geographic location.
      *
      * @expectedException Exception
      * @return void
