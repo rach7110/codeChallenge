@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://github.com/rach7110/codeChallenge/new/master?readme=1 target='_blank'">Information about how to use this application can be found in the Readme.</a>
+                    <a href="https://github.com/rach7110/codeChallenge/" target='_blank'>Information about how to use this application can be found on Github</a>
                 </div>
             </div>
         </div>
